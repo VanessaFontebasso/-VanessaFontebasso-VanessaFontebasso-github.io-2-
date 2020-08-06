@@ -5,19 +5,26 @@
   box-sizing: border-box;
 }
 html {
-	scroll-behavior: smooth;
-}
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  }
 body {
-  font-family: Times New Roman;
+  font-family: helvetica;
   background-color:  # #FCFCFB;
 }
+
+
 
 .container {
 	min-height: 100vh;
 	width: 100%;
 	display: flex;
+scroll-snap-align: start;
+
 
 }
+
+
 
 .nav-container {
   max-width: 1140px;
@@ -34,7 +41,7 @@ body {
   right: 0px;
   padding-top: 20px;
   padding-bottom: 20px;
-  z-index: 2;
+  z-index: 200;
   background-color: white;
   box-shadow: 0px 0px 18px 0px #0000002c
 }
@@ -88,6 +95,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 
@@ -98,6 +106,8 @@ a {
   margin-bottom: 10px;
 
   text-align: center;
+
+
 
 }
 
@@ -168,20 +178,29 @@ a {
 /*INIZIO SERVIZI*/
 #services {
     margin-bottom: 100px;
+    display: flex;
+    align-items: center;
+
+
+
 }
 #services .services{
+
   flex-direction: column;
   text-align: center;
-  max-width: 1500px;
-  margin-top: 0px;
-  padding: 0px 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  align-items: center;
+  display: flex;
+
 
 }
 
 #services .services .container{
   flex-direction: row;
   flex-flow: row wrap;
-  background-color: black;
+
 
 }
 
@@ -192,6 +211,7 @@ a {
   justify-content: center;
 }
 #services .services-top {
+
   max-width: 500px;
   margin: 10px;
 }
@@ -243,6 +263,17 @@ align-items: center;
 justify-content: center;
 flex-direction: column;
   margin-bottom: 100px;
+
+  min-height: 100vh;
+  width: 100%;
+}
+
+#portfolio .portfolio {
+  flex-direction: column;
+  text-align: center;
+  max-width: 1500px;
+  margin-top: 0px;
+  padding: 0px 10px;
 }
 
 #portfolio .portfolio-item {
@@ -251,7 +282,7 @@ flex-direction: column;
   justify-content: center;
   flex-direction: row;
   width: 80%;
-  max-width: 98rem;
+
   background-color: #EBEBEB;
   padding: 20px;
   border-radius: 10px;
@@ -331,7 +362,25 @@ flex-direction: column;
 /*FINE ABOUT*/
 
 /*INIZIO CONTACT*/
-#contact .contact-container {
+
+#contact {
+  min-height: 100vh;
+
+
+  align-items: center;
+  width: 100%;
+}
+#contact .contact{
+  flex-direction: column;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  align-items: center;
+  display: flex;
+
+}
+#contact .contact .container {
   padding: 40px;
   text-align: center;
   justify-content: center;
@@ -339,6 +388,7 @@ flex-direction: column;
   margin: 50px;
   display: flex;
   flex-direction: column;
+  scroll-snap-align: start;
 }
 
 
@@ -349,7 +399,7 @@ margin-bottom: 40px;
 
 }
 
-#contact .contact-container .cta {
+#contact .contact .container .cta {
 
 align-items: center;
 
@@ -552,18 +602,106 @@ width: 70%;
 
 /*inizio media query MOBILE*/
 @media only screen and (max-width: 767px) {
-  #header  .row{
-justify-content: center;
+
+#header {
+  padding-top:0px;
+}
+
+#header .navbar ul li a{
+  font-size: 25px;
+}
+
+
+#header .brand-name, .hamburger{
+  padding-top: 20px;
+}
+#header .hamburger .line{
+  width: 30px;
+  height: 3px;
+  background: #F4464F;
+  margin: 5px;
+}
+
+
+nav {
+  position: relative;
+}
+
+.hamburger {
+  position: absolute;
+  cursor: pointer;
+  right: 5%;
+  z-index: 3;
+}
+
+.hamburger.open {
+  position: absolute;
+  cursor: pointer;
+  right: 5%;
+  z-index: 3;
+  background-color: white;
+}
+
+
+
+.navbar {
+  position: fixed;
+  background-color: White;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  clip-path: circle(100px at 90% -20%);
+  -webkit-clip-path:circle(100px at 90% -20%);
+  transition: all 0.5s ease-out;
+  pointer-events: none;
   }
 
-  #header .navbar {
-    margin-top: 20px;
-  }
+.navbar.open {
+  clip-path: circle(1100px at 90% -20%);
+  -webkit-clip-path:circle(1100px at 90% -20%);
+  pointer-events: all;
+  font-size: 50px;
+}
+
+.navbar.close {
+  display: none;
+}
+
+
+.navbar ul{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  overflow-x: hidden;
+
+
+}
+
+.navbar ul li a{
+  color: blue;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 80px;
+  font-size: 35px;
+}
 
   #about .about .col-right h3, p{
     text-align: left;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
+#services .services-categories p{
+  text-align: center;
+}
 
 #portfolio .portfolio-item {
   flex-direction: column;
